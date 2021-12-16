@@ -9,6 +9,7 @@ RUN npm install
 
 COPY ./src ./src
 COPY ./public ./public
+COPY ./.env ./.env
 
 RUN npm run-script build
 
