@@ -1,6 +1,5 @@
 <script>
-    export let name = ""
-    export let id
+    export let device
     let power_cmd = "on"
 
     function sendCommand(checked) {
@@ -8,7 +7,7 @@
         if (checked) {
             cmd = "on"
         }
-		fetch(`http://localhost:5000/devices/command?id=${id}`, {
+		fetch(`http://localhost:5000/devices/command?id=${device.Id}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -21,8 +20,12 @@
 </script>
 
 <div class="device">
-    <p>{name}</p>
+    <p>{device.Name}</p>
+    {#if device.State.power }
+    <input type="checkbox" checked on:click={(event) => sendCommand(event.target.checked)}>
+    {:else}
     <input type="checkbox" on:click={(event) => sendCommand(event.target.checked)}>
+    {/if}
 </div>
 
 <style>

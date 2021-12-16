@@ -2,10 +2,9 @@
 	import { onMount } from "svelte";
 	import DeviceCard from "./components/DeviceCard.svelte"
 
-	let devices = [{"Name": "test"}]
-
+	let devices = []
 	onMount(() => {
-		fetch("http://localhost:5000/devices")
+		fetch(`http://${APIHOST}:5000/devices`)
 		.then(response => response.json())
 		.then(data => {
 			devices = data
@@ -24,7 +23,7 @@
 	<h1>Dashboard</h1>
 	<div class="container">
 		{#each devices as device}
-			<DeviceCard name={device.Name} id={device.Id}/>
+			<DeviceCard device={device}/>
 		{/each}
 	</div>
 </main>
