@@ -8,9 +8,13 @@ import css from 'rollup-plugin-css-only';
 import replace from '@rollup/plugin-replace';
 import dotenv from 'dotenv';
 
-dotenv.config();
-
 const production = !process.env.ROLLUP_WATCH;
+
+if (production) {
+	dotenv.config()
+} else {
+	dotenv.config({ path: './.env-dev'})
+}
 
 function serve() {
 	let server;

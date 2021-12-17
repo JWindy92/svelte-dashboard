@@ -1,4 +1,4 @@
-FROM node:14-alpine
+FROM arm64v8/node:latest
 
 WORKDIR /usr/src/app
 
@@ -16,5 +16,6 @@ RUN npm run-script build
 EXPOSE 3000
 
 ENV HOST=0.0.0.0
+ENV APIHOST=${APIHOST}
 
 CMD [ "npm", "start" ]

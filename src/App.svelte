@@ -1,7 +1,6 @@
 <script>
 	import { onMount } from "svelte";
 	import DeviceCard from "./components/DeviceCard.svelte"
-
 	let devices = []
 	onMount(() => {
 		fetch(`http://${APIHOST}:5000/devices`)
@@ -9,6 +8,7 @@
 		.then(data => {
 			devices = data
 		}).catch(error => {
+			console.log(`API: http://${APIHOST}:5000`)
 			console.log(error);
 			return [];
 		})
