@@ -7,7 +7,7 @@
         if (checked) {
             cmd = "on"
         }
-		fetch(`http://localhost:5000/devices/command?id=${device.Id}`, {
+		fetch(`http://${APIHOST}:5000/devices/command?id=${device.Id}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
