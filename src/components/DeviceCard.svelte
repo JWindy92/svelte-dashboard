@@ -1,4 +1,6 @@
 <script>
+    import ToggleSwitch from "./controls/ToggleSwitch.svelte"
+
     export let device
     let power_cmd = "on"
 
@@ -21,11 +23,7 @@
 
 <div class="device">
     <p>{device.Name}</p>
-    {#if device.State.power }
-    <input type="checkbox" checked on:click={(event) => sendCommand(event.target.checked)}>
-    {:else}
-    <input type="checkbox" on:click={(event) => sendCommand(event.target.checked)}>
-    {/if}
+    <ToggleSwitch is_checked={device.State.power} action={sendCommand}/>
 </div>
 
 <style>
@@ -35,11 +33,6 @@
 		width: 125px;
 		min-width: 125px;
 		height: 150px;
-	}
-
-	.device input {
-		height: 25px;
-		width: 25px;
 	}
 
     @media (max-width: 640px) {

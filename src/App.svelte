@@ -3,6 +3,7 @@
 	import DeviceCard from "./components/DeviceCard.svelte"
 	let devices = []
 	onMount(() => {
+		console.log(`API: http://${APIHOST}:5000`)
 		fetch(`http://${APIHOST}:5000/devices`)
 		.then(response => response.json())
 		.then(data => {
