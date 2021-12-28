@@ -1,5 +1,6 @@
 <script>
     import ToggleSwitch from "./controls/ToggleSwitch.svelte"
+    import store from "../store"
 
     export let device
     let power_cmd = "on"
@@ -17,6 +18,9 @@
             body: JSON.stringify({
                 "power": cmd
             })
+        }).then(res => res.json())
+        .then(data => {
+            store.sendMessage(JSON.stringify(data))
         })
 	}
 </script>

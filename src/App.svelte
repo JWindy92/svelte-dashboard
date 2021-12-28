@@ -1,9 +1,35 @@
 <script>
 	import { onMount } from "svelte";
+	import store from "./store"
 	import DeviceCard from "./components/DeviceCard.svelte"
 	import SceneButton from "./components/SceneButton.svelte"
 	let devices = []
 	let scenes = []
+	let message;
+	let messages = []
+	
+	onMount(() => {
+		store.subscribe(currentMessage => {
+			updateDevices(currentMessage)
+		})
+	})
+
+	function updateDevices(msg) {
+		console.log(msg)
+		// data = JSON.parse(msg)
+		devices.forEach(device => {
+			if (device["Id"] == msg["Id"]) {
+				device = msg
+			}
+		})
+	}
+	
+	// function onSendMessage() {
+	// 	 if (message.length > 0) {
+	// 		 store.sendMessage(message);
+	// 		 message = "";
+	// 	 }
+	// }
 
 	function getDevices() {
 		console.log(`API: http://${APIHOST}:5000`)
@@ -47,7 +73,7 @@
 	
 	<div class="container">
 		{#each devices as device}
-			<DeviceCard device={device}/>
+			<DeviceCard bind:device={device}/>
 		{/each}
 	</div>
 </main>
