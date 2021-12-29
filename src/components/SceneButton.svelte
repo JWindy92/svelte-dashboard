@@ -1,4 +1,5 @@
 <script>
+    import store from "../store"
     export let scene
 
     function setScene() {
@@ -6,6 +7,12 @@
         console.log(`http://${APIHOST}:5000/scenes?id=${scene.Id}`)
 		fetch(`http://${APIHOST}:5000/scenes?id=${scene.Id}`, {
             method: 'POST'
+        }).then(res => res.json())
+        .then(data => {
+            // store.sendMessage(JSON.stringify(data))
+            data.forEach(device => {
+                store.sendMessage(JSON.stringify(device))
+            });
         })
 	}
 </script>

@@ -1,5 +1,5 @@
 <script>
-    export let is_checked = false
+    export let is_checked
     export let action;
 </script>
 

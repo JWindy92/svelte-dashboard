@@ -27,7 +27,7 @@
 
 <div class="device">
     <p>{device.Name}</p>
-    <ToggleSwitch is_checked={device.State.power} action={sendCommand}/>
+    <ToggleSwitch bind:is_checked={device.State.power} action={sendCommand}/>
 </div>
 
 <style>

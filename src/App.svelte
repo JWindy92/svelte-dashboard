@@ -1,12 +1,11 @@
 <script>
 	import { onMount } from "svelte";
 	import store from "./store"
-	import DeviceCard from "./components/DeviceCard.svelte"
 	import SceneButton from "./components/SceneButton.svelte"
-	let devices = []
+	import DeviceCard from "./components/DeviceCard.svelte"
+	let device_pool = []
+	$: devices = device_pool
 	let scenes = []
-	let message;
-	let messages = []
 	
 	onMount(() => {
 		store.subscribe(currentMessage => {
@@ -15,21 +14,13 @@
 	})
 
 	function updateDevices(msg) {
-		console.log(msg)
-		// data = JSON.parse(msg)
-		devices.forEach(device => {
-			if (device["Id"] == msg["Id"]) {
-				device = msg
+		devices.forEach((dev, idx) => {
+			if (dev["Id"] == msg["Id"]) {
+				devices[idx] = msg
 			}
 		})
+		
 	}
-	
-	// function onSendMessage() {
-	// 	 if (message.length > 0) {
-	// 		 store.sendMessage(message);
-	// 		 message = "";
-	// 	 }
-	// }
 
 	function getDevices() {
 		console.log(`API: http://${APIHOST}:5000`)
