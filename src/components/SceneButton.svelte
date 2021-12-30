@@ -21,14 +21,14 @@
 
 <style>
     .scene-btn {
-		border: 1px solid black;
+		border: 1px solid #ddd;
+        cursor: pointer;
         border-radius: 5px;
 		margin: 5px;
 		width: 125px;
 		min-width: 125px;
 		height: 50px;
-	}
-
+	} 
     @media (max-width: 640px) {
 
     }

@@ -32,7 +32,8 @@
 
 <style>
     .device {
-		border: 1px solid black;
+		border: 1px solid #ccc;
+        border-radius: 4px;
 		margin: 5px;
 		width: 125px;
 		min-width: 125px;
